@@ -1,0 +1,45 @@
+---
+name: todomvc
+description: Three tier example app using MySQL, Sinatra and Nginx
+keywords: MySQL, Sinatra, Nginx
+type: Default
+documentation: |
+  # Your Application Name
+  Sinatra based ToDo list implemented with MySQL back end for persistence and Nginx SSL termination at the front end
+
+  ## System Requirements
+  1 Core, 1GB RAM
+
+  ## Setup
+  mkdir -p /data/mysql on host for MySQL container
+
+  ## Port-Forwarding
+  If using Virtual Box, use the following command in your local machine's terminal window to create the port forwarding rule:
+  ``` VboxManage controlvm panamax-vm todomvc rule,tcp,,4443,,443 ```
+images:
+- name: cpswan_todomvc.mysql_latest
+  source: cpswan/todomvc.mysql:latest
+  type: Default
+  expose:
+  - '3306'
+  volumes:
+  - host_path: "/data/mysql"
+    container_path: "/var/lib/mysql"
+- name: cpswan_todomvc.sinatra
+  source: cpswan/todomvc.sinatra:latest
+  type: Default
+  expose:
+  - '4567'
+  links:
+  - service: cpswan_todomvc.mysql_latest
+    alias: db
+- name: cpswan_todomvc.ssl
+  source: cpswan/todomvc.ssl:latest
+  type: Default
+  ports:
+  - host_port: '443'
+    container_port: '443'
+    proto: TCP
+  links:
+  - service: cpswan_todomvc.sinatra
+    alias: app
