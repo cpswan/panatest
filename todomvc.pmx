@@ -11,14 +11,13 @@ documentation: |
   1 Core, 1GB RAM
 
   ## Setup
-  Log into Panamax VM using panamax ssh then
-  sudo mkdir -p /data/mysql on the VM host for MySQL container
+  mkdir -p /data/mysql on host for MySQL container
 
   ## Port-Forwarding
   If using Virtual Box, use the following command in your local machine's terminal window to create the port forwarding rule:
   ``` VBoxManage controlvm panamax-vm natpf1 todomvc,tcp,,4433,,443 ```
 images:
-- name: cpswan_todomvc.mysql
+- name: cpswan_todomvc.mysql_latest
   source: cpswan/todomvc.mysql:latest
   type: Default
   expose:
