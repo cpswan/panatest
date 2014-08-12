@@ -1,0 +1,25 @@
+---
+name: NodeRED
+description: NodeRED 0.8.1
+keywords: ''
+type: NodeJS
+documentation: |-
+  # Your Application Name
+  NodeRED visual editor for IoT flows
+
+  ## System Requirements
+  1 Core and 256MB RAM should be enough
+
+  ## Port-Forwarding
+  If using Virtual Box, use the following command in your local machine's terminal window to create the port forwarding rule:
+  ``` VBoxManage controlvm panamax-vm nodered rule,tcp,,1880,,1880 ```
+images:
+- name: cpswan_node-red_latest
+  source: cpswan/node-red:latest
+  type: Default
+  expose:
+  - '1880'
+  ports:
+  - host_port: '1880'
+    container_port: '1880'
+    proto: TCP
