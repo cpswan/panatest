@@ -12,7 +12,7 @@ documentation: |-
 
   ## Port-Forwarding
   If using Virtual Box, use the following command in your local machine's terminal window to create the port forwarding rule:
-  ``` VBoxManage controlvm panamax-vm nodered rule,tcp,,1880,,1880 ```
+  ```VBoxManage controlvm panamax-vm natpf1 nodered,tcp,,1880,,1880```
 images:
 - name: cpswan_node-red_latest
   source: cpswan/node-red:latest
