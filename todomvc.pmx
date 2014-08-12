@@ -11,7 +11,7 @@ documentation: |
   1 Core, 1GB RAM
 
   ## Setup
-  Log into Panamax VM using ```panamax ssh``` then:
+  Log into Panamax VM using ```panamax ssh``` then
   ```sudo mkdir -p /data/mysql``` on the VM host for MySQL container
 
   ## Port-Forwarding
