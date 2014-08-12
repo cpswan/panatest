@@ -18,7 +18,7 @@ documentation: |
   If using Virtual Box, use the following command in your local machine's terminal window to create the port forwarding rule:
   ```VBoxManage controlvm panamax-vm natpf1 todomvc,tcp,,4433,,443```
 images:
-- name: cpswan_todomvc.mysql_latest
+- name: cpswan_todomvc.mysql
   source: cpswan/todomvc.mysql:latest
   type: Default
   expose:
